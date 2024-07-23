@@ -3,7 +3,7 @@ import { useNode } from "@craftjs/core";
 interface IContainerProps {
   background: string;
   padding?: number;
-  children: React.ReactNode;
+  children?: React.ReactNode;
 }
 
 export const Container = ({

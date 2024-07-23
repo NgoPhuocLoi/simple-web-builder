@@ -12,10 +12,11 @@ function App() {
   return (
     <div className="p-4 flex items-center flex-col">
       <h2>A super simple page editor</h2>
-      <Topbar />
       <Editor
         resolver={{ Card, MyButton, Text, Container, CardTop, CardBottom }}
       >
+        <Topbar />
+
         <div className="grid grid-cols-3 gap-4 w-full">
           <div className="col-span-2 border p-4">
             <Frame>
