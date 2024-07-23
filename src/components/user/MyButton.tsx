@@ -6,8 +6,8 @@ export const MyButton = ({ label }: { label: string }) => {
     connectors: { connect, drag },
   } = useNode();
   return (
-    <div ref={(ref) => connect(drag(ref!))}>
-      <Button>{label}</Button>;
+    <div className="inline-block" ref={(ref) => connect(drag(ref!))}>
+      <Button>{label}</Button>
     </div>
   );
 };

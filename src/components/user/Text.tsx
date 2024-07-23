@@ -8,10 +8,17 @@ interface ITextProps {
 export const Text = ({ text, fontSize }: ITextProps) => {
   const {
     connectors: { connect, drag },
-  } = useNode();
+    selected,
+  } = useNode((node) => {
+    return {
+      selected: node.events.selected,
+    };
+  });
   return (
     <div ref={(ref) => connect(drag(ref!))}>
-      <p style={{ fontSize }}>{text}</p>
+      <p contentEditable={selected} style={{ fontSize }}>
+        {text}
+      </p>
     </div>
   );
 };
