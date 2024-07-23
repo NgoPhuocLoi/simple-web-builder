@@ -2,9 +2,10 @@ import { useEditor } from "@craftjs/core";
 import { Button } from "./ui/button";
 import { Label } from "./ui/label";
 import { Switch } from "./ui/switch";
+import LZString from "lz-string";
 
 export const Topbar = () => {
-  const { enabled, actions } = useEditor((state) => ({
+  const { enabled, actions, query } = useEditor((state) => ({
     enabled: state.options.enabled,
   }));
   return (
@@ -22,7 +23,15 @@ export const Topbar = () => {
         <Label htmlFor="airplane-mode">Airplane Mode</Label>
       </div>
 
-      <Button>Serialize to JSON</Button>
+      <Button
+        onClick={() => {
+          const compressed = LZString.compressToBase64(query.serialize());
+          console.log(compressed);
+          localStorage.setItem("craftjs", compressed);
+        }}
+      >
+        Serialize to JSON
+      </Button>
     </div>
   );
 };
